@@ -49,7 +49,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_aliases
 
 # Enable syntax highlighting
-source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Enable z
