@@ -2,12 +2,12 @@
 export ZSH=~/.oh-my-zsh
 
 # Disable auto-updates
-DISABLE_AUTO_UPDATE=true
+DISABLE_AUTO_UPDATE="true"
 
 # Set history config
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000000
+HISTFILE=~/.zsh_history
+HISTSIZE="1000"
+SAVEHIST="1000000"
 
 # Theme
 ZSH_THEME="fishy"
@@ -18,29 +18,21 @@ setopt HIST_IGNORE_DUPS
 # Allow autocompletion of alias switches
 setopt completealiases
 
-# Autocorrect commands
-ENABLE_CORRECTION="true"
-
 # Select which plugins to load
-plugins=(sudo tmux history autojump common-aliases systemd encode64)
-
-# Set path
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/games:/usr/bin/core_perl:$HOME/bin"
-
-# Source config file
-source $ZSH/oh-my-zsh.sh
+plugins=(sudo tmux history common-aliases systemd)
 
 # Set language environment
-export LANG=en_US.UTF-8
+export LANG="en_US.UTF-8"
 
 # Set up Go environment
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+
+# Set path
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin"
 
 # Enable command completion
 autoload -U compinit
 compinit
-
 autoload -U bashcompinit
 bashcompinit
 
@@ -50,16 +42,15 @@ zstyle ':completion:*' menu select
 # Find any new executables in path
 zstyle ':completion:*' rehash true
 
-## Aliases
-alias rec='LC_ALL=en_US.UTF-8 asciinema rec'
-alias ls='ls --color'
+# Source config file
+source $ZSH/oh-my-zsh.sh
 
-## Functions
-# check the current weather
-weather (){
-        curl wttr.in/$1
-}
+## Aliases
+source ~/.zsh_aliases
 
 # Enable syntax highlighting
 source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# Enable z
+. $HOME/bin/z.sh
