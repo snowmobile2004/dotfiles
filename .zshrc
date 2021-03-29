@@ -2,7 +2,7 @@
 export ZSH=~/.oh-my-zsh
 
 # Disable auto-updates
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="FALSE"
 
 # Set history config
 HISTFILE=~/.zsh_history
