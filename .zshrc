@@ -54,3 +54,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Enable z
 . $HOME/bin/z.sh
+
+eval "$(direnv hook zsh)"
+
