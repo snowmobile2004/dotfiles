@@ -88,6 +88,8 @@ zinit light-mode for \
 zplugin light jonmosco/kube-ps1
 PROMPT='$(kube_ps1)'$PROMPT
 
+
+#Git branch prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
