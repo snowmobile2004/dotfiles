@@ -1,1 +1,2 @@
 alias wg='sudo wg'
+alias portcheck='sudo lsof -i -P -n | grep LISTEN'
