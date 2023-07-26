@@ -28,7 +28,7 @@ export LANG="en_US.UTF-8"
 export GOPATH=$HOME/go
 
 # Set path
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin"
 
 # Enable command completion
 autoload -U compinit
@@ -97,6 +97,3 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
-
-#Add autocompletion for Ansible (via pipx)
-eval "$(register-python-argcomplete pipx)"
