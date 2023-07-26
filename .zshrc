@@ -97,3 +97,6 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
+
+#Add autocompletion for Ansible (via pipx)
+eval "$(register-python-argcomplete pipx)"
