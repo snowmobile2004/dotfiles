@@ -1,3 +1,5 @@
 alias wg='sudo wg'
 alias portcheck='sudo lsof -i -P -n | grep LISTEN'
 alias apt='nala'
+alias largefiles='sudo  du -Sh | sort -rh | head -25'
+alias diskspace='sudo df -h'
