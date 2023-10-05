@@ -19,11 +19,13 @@ setopt HIST_IGNORE_DUPS
 setopt completealiases
 
 # Select which plugins to load
-plugins=(sudo tmux history common-aliases systemd)
+plugins=(sudo tmux history common-aliases systemd git ssh-agent)
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent identities id_rsa ansible_id_rsa
 
 # Set language environment
 export LANG="en_US.UTF-8"
-
+export LC_ALL="C.UTF-8"
 # Set up Go environment
 export GOPATH=$HOME/go
 
@@ -85,8 +87,8 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 # kube context tag
-zplugin light jonmosco/kube-ps1
-PROMPT='$(kube_ps1)'$PROMPT
+#zplugin light jonmosco/kube-ps1
+#PROMPT='$(kube_ps1)'$PROMPT
 
 
 #Git branch prompt
@@ -97,3 +99,10 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
+
+# Custom ssh agent config
+${HOME}/.local/bin/wsl-ssh-agent-relay start
+export SSH_AUTH_SOCK=${HOME}/.ssh/wsl-ssh-agent.sock
+setsid nohup socat EXEC:"/c/Users/jgreen/npiperelay.exe //./pipe/\ssh-pageant" \
+    UNIX-LISTEN:${SSH_AUTH_SOCK},unlink-close,unlink-early,fork \
+    >/dev/null 2>&1 &
