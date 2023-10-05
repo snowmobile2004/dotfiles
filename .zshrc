@@ -19,7 +19,7 @@ setopt HIST_IGNORE_DUPS
 setopt completealiases
 
 # Select which plugins to load
-plugins=(sudo tmux history common-aliases systemd git ssh-agent)
+plugins=(docker colored-man-pages command-not-found encode64 extract git-prompt hitchhiker sudo tmux history common-aliases systemd git ssh-agent jsontools lol ansible screen thefuck systemadmin)
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 zstyle :omz:plugins:ssh-agent identities id_rsa ansible_id_rsa
 
@@ -61,7 +61,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 eval "$(direnv hook zsh)"
 
 # kubectl autocomplete
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+#[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -86,11 +86,6 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-# kube context tag
-#zplugin light jonmosco/kube-ps1
-#PROMPT='$(kube_ps1)'$PROMPT
-
-
 #Git branch prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -99,10 +94,3 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
-
-# Custom ssh agent config
-${HOME}/.local/bin/wsl-ssh-agent-relay start
-export SSH_AUTH_SOCK=${HOME}/.ssh/wsl-ssh-agent.sock
-setsid nohup socat EXEC:"/c/Users/jgreen/npiperelay.exe //./pipe/\ssh-pageant" \
-    UNIX-LISTEN:${SSH_AUTH_SOCK},unlink-close,unlink-early,fork \
-    >/dev/null 2>&1 &
