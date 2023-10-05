@@ -19,10 +19,11 @@ setopt HIST_IGNORE_DUPS
 setopt completealiases
 
 # Select which plugins to load
-plugins=(docker colored-man-pages command-not-found encode64 extract git-prompt hitchhiker sudo tmux history common-aliases systemd git ssh-agent jsontools lol ansible screen thefuck systemadmin)
+plugins=(docker colored-man-pages command-not-found encode64 extract git-prompt hitchhiker sudo tmux history common-aliases systemd git ssh-agent jsontools lol ansible screen systemadmin)
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 #zstyle :omz:plugins:ssh-agent identities id_rsa ansible_id_rsa
 zstyle :omz:plugins:ssh-agent lazy yes
+
 # Set language environment
 export LANG="en_US.UTF-8"
 export LC_ALL="C.UTF-8"
