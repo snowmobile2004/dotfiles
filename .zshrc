@@ -31,7 +31,7 @@ export LC_ALL="C.UTF-8"
 export GOPATH=$HOME/go
 
 # Set path
-export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin:/usr/games"
 
 # Enable command completion
 autoload -U compinit
