@@ -18,6 +18,31 @@ setopt HIST_IGNORE_DUPS
 # Allow autocompletion of alias switches
 setopt completealiases
 
+# Fix aliases in sudo
+alias sudo='sudo '
+
+# Alias to unzip any file with "unzip" command
+unzip(){
+    if [ -f $1 ] ; then
+            case $1 in
+                    *.tar.bz2)   tar xvjf $1    ;;
+                    *.tar.gz)    tar xvzf $1    ;;
+                    *.bz2)       bunzip2 $1     ;;
+                    *.rar)       unrar x $1     ;;
+                    *.gz)        gunzip $1      ;;
+                    *.tar)       tar xvf $1     ;;
+                    *.tbz2)      tar xvjf $1    ;;
+                    *.tgz)       tar xvzf $1    ;;
+                    *.zip)       unzip $1       ;;
+                    *.Z)         uncompress $1  ;;
+                    *.7z)        7z x $1        ;;
+                    *)           echo "Unable to extract '$1'" ;;
+            esac
+    else
+            echo "'$1' is not a valid file"
+    fi
+}
+
 # Select which plugins to load
 plugins=(docker colored-man-pages command-not-found encode64 extract git-prompt hitchhiker sudo tmux history common-aliases systemd git ssh-agent jsontools lol ansible screen systemadmin)
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
@@ -31,7 +56,7 @@ export LC_ALL="C.UTF-8"
 export GOPATH=$HOME/go
 
 # Set path
-export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin:/usr/games"
 
 # Enable command completion
 autoload -U compinit
