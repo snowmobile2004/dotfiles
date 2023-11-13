@@ -6,8 +6,8 @@ DISABLE_AUTO_UPDATE="FALSE"
 
 # Set history config
 HISTFILE=~/.zsh_history
-HISTSIZE="1000"
-SAVEHIST="1000000"
+HISTSIZE="100000000000"
+SAVEHIST="100000000000"
 
 # Theme
 ZSH_THEME="fishy"
@@ -21,8 +21,8 @@ setopt completealiases
 # Select which plugins to load
 plugins=(docker colored-man-pages command-not-found encode64 extract git-prompt hitchhiker sudo tmux history common-aliases systemd git ssh-agent jsontools lol ansible screen systemadmin)
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
-#zstyle :omz:plugins:ssh-agent identities id_rsa ansible_id_rsa
-zstyle :omz:plugins:ssh-agent lazy yes
+zstyle :omz:plugins:ssh-agent identities id_rsa ansible_id_rsa
+#zstyle :omz:plugins:ssh-agent lazy yes
 
 # Set language environment
 export LANG="en_US.UTF-8"
@@ -95,3 +95,7 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
+
+# LFTP alias
+alias airlock_bru='lftp -u a-jgreen@corp.dsg.local airlock-brussels.corp.dsg.local'
+alias airlock_brp='lftp -u a-jgreen@corp.dsg.local airlock-brampton.corp.dsg.local'
